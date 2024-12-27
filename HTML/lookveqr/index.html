@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="lookove.png" type="image/x-icon">
+    <title>LOOKOVE</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            text-align: center;
+            padding: 80px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .social-links {
+            display: flex;
+            flex-direction: column; /* Stack icons vertically */
+            align-items: center; /* Center align icons */
+            margin-top: 30px;
+        }
+
+        .social-link {
+            margin: 15px 0; /* Space between icons */
+            position: relative;
+            display: flex; /* Use flexbox for alignment */
+            align-items: center; /* Center align icon and text */
+            text-decoration: none; /* Remove underline */
+            color: inherit; /* Inherit text color */
+            font-size: 1.2em; /* Increase font size */
+            font-weight: bold; /* Make text bold */
+            transition: color 0.3s ease; /* Smooth color transition */
+        }
+
+        .social-link img {
+            width: 60px; /* Icon size */
+            height: 60px;
+            border-radius: 50%;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Smooth transition */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Initial shadow */
+            margin-right: 10px; /* Space between icon and text */
+        }
+
+        .social-link img:hover {
+            transform: scale(1.05); /* Slightly enlarge on hover */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Increase shadow on hover */
+        }
+
+        .social-link:hover {
+            color: #56158d; /* Change text color on hover */
+        }
+
+        /* Media Queries for Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                width: 90%; /* Adjust width for smaller screens */
+            }
+
+            .social-link img {
+                width: 50px; /* Smaller icons on mobile */
+                height: 50px;
+            }
+
+            .social-link {
+                font-size: 1em; /* Adjust font size for mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>LOOKOVE</h1>
+        <p>Welcome to LOOKOVE!</p>
+
+        <div class="social-links">
+            <a href="https://www.facebook.com/lookove.store" target="_blank" class="social-link">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" alt="Facebook">
+                Facebook
+            </a>
+            <a href="https://www.instagram.com/lookove.store/" target="_blank" class="social-link">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg" alt="Instagram">
+                Instagram
+            </a>
+            <a href="https://lookove.com/" target="_blank" class="social-link">
+                <img src="lookove.png" alt="E-commerce">
+                Shop Now
+            </a>
+        </div>
+    </div>
+</body>
+</html>
