@@ -1,0 +1,74 @@
+<html>
+<title>20200204029-Assignment1</title>
+<canvas id="webglcanvas" width="500" height="500"></canvas>
+
+<script>
+    const canvas = document.getElementById("webglcanvas");
+    const gl = canvas.getContext("webgl");
+
+    // Initialize shaders
+    const initShader = (type, source) => {
+        const shader = gl.createShader(type);
+        gl.shaderSource(shader, source);
+        gl.compileShader(shader);
+        if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+            console.error("Shader compile error:", gl.getShaderInfoLog(shader));
+            gl.deleteShader(shader);
+            return null;
+        }
+        return shader;
+    };
+
+    const vertexShaderSource = `
+        attribute vec3 a_coords;
+        void main() {
+            gl_Position = vec4(a_coords, 1.0);
+        }`;
+
+    const fragmentShaderSource = `
+        void main() {
+            gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0); // Black color for the triangles
+        }`;
+
+    const vertexShader = initShader(gl.VERTEX_SHADER, vertexShaderSource);
+    const fragmentShader = initShader(gl.FRAGMENT_SHADER, fragmentShaderSource);
+
+    const program = gl.createProgram();
+    gl.attachShader(program, vertexShader);
+    gl.attachShader(program, fragmentShader);
+    gl.linkProgram(program);
+
+    if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+        console.error("Program link error:", gl.getProgramInfoLog(program));
+        gl.deleteProgram(program);
+    }
+
+    gl.useProgram(program);
+
+    const aCoordsLocation = gl.getAttribLocation(program, "a_coords");
+
+    
+    const coords = new Float32Array([
+        -0.387,  0.081, 0.0,  -0.027,  0.081, 0.0,  -0.207,  0.369, 0.0,
+        -0.387,  0.045, 0.0, -0.027,  0.045, 0.0,  -0.207, -0.225, 0.0, 
+        -0.18,  -0.252, 0.0,  0.18,  -0.252, 0.0,   0.0,   0.018, 0.0, 
+        -0.18,  -0.288, 0.0,  0.18,  -0.288, 0.0,   0.0,  -0.558, 0.0, 
+         0.387,  0.081, 0.0,  0.027,  0.081, 0.0,   0.207,  0.369, 0.0,
+         0.387,  0.045, 0.0,  0.027,  0.045, 0.0,   0.207, -0.225, 0.0, 
+        -0.594,  0.396, 0.0, -0.234,  0.396, 0.0,  -0.414,  0.108, 0.0, 
+         0.594,  0.396, 0.0,  0.234,  0.396, 0.0,   0.414,  0.108, 0.0  
+    ]);
+
+    
+    const coordsBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, coordsBuffer);
+    gl.bufferData(gl.ARRAY_BUFFER, coords, gl.STATIC_DRAW);
+    gl.vertexAttribPointer(aCoordsLocation, 3, gl.FLOAT, false, 0, 0);
+    gl.enableVertexAttribArray(aCoordsLocation);
+
+    
+    gl.clearColor(0.0, 0.5, 0.0, 1.0); 
+    gl.clear(gl.COLOR_BUFFER_BIT);
+    gl.drawArrays(gl.TRIANGLES, 0, coords.length / 3); 
+</script>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<title>Triangle Mesh</title>
+<canvas id="webglcanvas" width="500" height="500"></canvas>
+<script>
+    var canvas = document.getElementById("webglcanvas");
+    var gl = canvas.getContext("webgl");
+
+    var triangles = [];
+
+    const sideLength = 0.3;
+    const height = sideLength * Math.sqrt(3) / 2;
+    const rowGap = 0.035;
+    const extraGapBetweenRow2And3 = 0.022;
+
+    triangles.push({
+        vertices: [
+            -0.4, rowGap,
+            -0.4 - sideLength / 2, height + rowGap,
+            -0.4 + sideLength / 2, height + rowGap
+        ],
+        color: [0.0, 0.0, 0.0]
+    });
+    triangles.push({
+        vertices: [
+            -0.2, height + rowGap,
+            -0.2 - sideLength / 2, rowGap,
+            -0.2 + sideLength / 2, rowGap
+        ],
+        color: [0.0, 0.0, 0.0]
+    });
+    triangles.push({
+        vertices: [],
+        color: []
+    });
+    triangles.push({
+        vertices: [
+            0.2, height + rowGap,
+            0.2 - sideLength / 2, rowGap,
+            0.2 + sideLength / 2, rowGap
+        ],
+        color: [0.0, 0.0, 0.0]
+    });
+    triangles.push({
+        vertices: [
+            0.4, rowGap,
+            0.4 - sideLength / 2, height + rowGap,
+            0.4 + sideLength / 2, height + rowGap
+        ],
+        color: [0.0, 0.0, 0.0]
+    });
+
+    const row2BaseY = -height - rowGap;
+    triangles.push({
+        vertices: [
+            -0.2, row2BaseY,
+            -0.2 - sideLength / 2, row2BaseY + height,
+            -0.2 + sideLength / 2, row2BaseY + height
+        ],
+        color: [0.0, 0.0, 0.0]
+    });
+    triangles.push({
+        vertices: [
+            0.0, row2BaseY + height,
+            0.0 - sideLength / 2, row2BaseY,
+            0.0 + sideLength / 2, row2BaseY
+        ],
+        color: [0.0, 0.0, 0.0]
+    });
+    triangles.push({
+        vertices: [
+            0.2, row2BaseY,
+            0.2 - sideLength / 2, row2BaseY + height,
+            0.2 + sideLength / 2, row2BaseY + height
+        ],
+        color: [0.0, 0.0, 0.0]
+    });
+
+    const row3BaseY = row2BaseY - height - rowGap - extraGapBetweenRow2And3;
+    triangles.push({
+        vertices: [
+            0.0, row3BaseY,
+            0.0 - sideLength / 2, row3BaseY + height,
+            0.0 + sideLength / 2, row3BaseY + height
+        ],
+        color: [0.0, 0.0, 0.0]
+    });
+
+    var vertexShaderSource = `
+        attribute vec2 a_coords;
+        attribute vec3 a_color;
+        varying vec3 v_color;
+        void main() {
+            gl_Position = vec4(a_coords, 0.0, 1.0);
+            v_color = a_color;
+        }
+    `;
+
+    var fragmentShaderSource = `
+        precision mediump float;
+        varying vec3 v_color;
+        void main() {
+            gl_FragColor = vec4(v_color, 1.0);
+        }
+    `;
+
+    var vsh = gl.createShader(gl.VERTEX_SHADER);
+    gl.shaderSource(vsh, vertexShaderSource);
+    gl.compileShader(vsh);
+
+    var fsh = gl.createShader(gl.FRAGMENT_SHADER);
+    gl.shaderSource(fsh, fragmentShaderSource);
+    gl.compileShader(fsh);
+
+    var prog = gl.createProgram();
+    gl.attachShader(prog, vsh);
+    gl.attachShader(prog, fsh);
+    gl.linkProgram(prog);
+    gl.useProgram(prog);
+
+    var a_coords_location = gl.getAttribLocation(prog, "a_coords");
+    var a_color_location = gl.getAttribLocation(prog, "a_color");
+
+    var vertexBuffer = gl.createBuffer();
+    var colorBuffer = gl.createBuffer();
+
+    gl.clearColor(0.0, 0.5, 0.0, 1.0);
+    gl.clear(gl.COLOR_BUFFER_BIT);
+
+    triangles.forEach(function (triangle) {
+        if (triangle.vertices.length === 0) return;
+
+        var vertices = triangle.vertices;
+        var color = triangle.color;
+
+        gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
+        gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);
+        gl.vertexAttribPointer(a_coords_location, 2, gl.FLOAT, false, 0, 0);
+        gl.enableVertexAttribArray(a_coords_location);
+
+        var colors = Array(vertices.length / 2).fill(color).flat();
+        gl.bindBuffer(gl.ARRAY_BUFFER, colorBuffer);
+        gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(colors), gl.STATIC_DRAW);
+        gl.vertexAttribPointer(a_color_location, 3, gl.FLOAT, false, 0, 0);
+        gl.enableVertexAttribArray(a_color_location);
+
+        gl.drawArrays(gl.TRIANGLES, 0, vertices.length / 2);
+    });
+</script>
+</html>
