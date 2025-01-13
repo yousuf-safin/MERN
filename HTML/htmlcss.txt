@@ -1,0 +1,5 @@
+there can be three types of CSS in a html programme.
+
+        1. Inline
+        2. External
+        3. Internal 

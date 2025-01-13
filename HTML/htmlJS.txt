@@ -1,0 +1,5 @@
+Javascript also can be used in HTMl in 3 way.
+
+        1. Internal
+        2. External
+        3. Inline
