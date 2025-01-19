@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Table & List</title>
+  </head>
+  <style>
+    table,tr,td,th {
+      border: 1px solid black;
+      border-collapse: collapse;
+      padding: 10px;
+    }
+    ul{
+      margin: 5 0 15px;
+      padding: 0;
+      text-align: center;
+    }
+    ul li{
+      display: inline;
+      margin-right: 10px;
+    }
+    ul li a{
+      text-decoration: none;
+      color: black;
+      background-color: tomato;
+      padding: 10px 20px;
+    }
+    ul li a:hover{
+      background-color: green;
+      color: white;
+    }
+  </style>
+  <body>
+    <ul type="none">
+      <li><a href="">Home</a></li>
+      <li><a href="">About</a></li>
+      <li><a href="">Contact</a></li>
+      <li><a href="">Services</a></li>
+    </ul>
+
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Number</th>
+      </tr>
+      <tr>
+        <td>John</td>
+        <td>25</td>
+        <td>1234567890</td>
+      </tr>
+      <tr>
+        <td>Smith</td>
+        <td>30</td>
+        <td>0987654321</td>
+      </tr>
+    </table>
+
+    <h2>List</h2>
+    <ul type="square">
+      <li>Item 1</li>
+      <li>Item 2</li>
+      <li>Item 3</li>
+    </ul>
+    <ol type="A">
+      <li>Item 1</li>
+      <li>Item 2</li>
+      <li>Item 3</li>
+    </ol>
+    <dl>
+      <dt>Item 1</dt>
+      <dd>Description 1</dd>
+      <dt>Item 2</dt>
+      <dd>Description 2</dd>
+      <dt>Item 3</dt>
+      <dd>Description 3</dd>
+    </dl>
+  </body>
+</html>
