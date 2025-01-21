@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Yousuf Ali">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout</title>
+</head>
+<style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+header {
+  background: #e66767;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 10px;
+  color: white;
+}
+nav {
+  background: #574b90;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+nav ul {
+  list-style: none;
+}
+nav ul li {
+  display: inline-block;
+  margin: 0 10px;
+}
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+}
+section {
+  display: flex;
+  justify-content: space-between;
+}
+div {
+  background: #786fa6;
+  flex-basis: 60%;
+  padding: 25px 30px;
+}
+aside {
+  padding: 25px 30px;
+  background: #f7d794;
+  flex-basis: 38%;
+}
+aside ul {
+  margin-left: 18px;
+  margin-top: 10px;
+}
+footer {
+  margin-top: 10px;
+  background: #596275;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+
+#hero {
+  background: #546de5;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 10px;
+  color: white;
+  height: 300px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+#hero h1 {
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+#hero a {
+  background: #262626;
+  color: #fff;
+  display: inline-block;
+  padding: 10px 25px;
+  margin-top: 15px;
+}
+</style>
+<body>
+    <header>
+        <h1>Yousuf Ali</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Services</a></li>
+        </ul>
+    </nav>
+    <Section id="hero">
+        <h1>Welcome</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem.</p>
+      <a href="">Join Now</a>
+    </Section>
+    <section >
+        <div>
+            <h2>This is our first website</h2>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus exercitationem qui quo laboriosam, sunt mollitia pariatur saepe temporibus, quis corrupti ex dolore dolores iusto facilis minus cumque possimus, minima maxime.</p>
+        </div>
+        <aside>
+            <h3>Latest News</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem.</p>
+            <ul>
+                <li><a href="#">Latest News</a></li>
+                <li><a href="#">Latest News</a></li>
+                <li><a href="#">Latest News</a></li>
+                <li><a href="#">Latest News</a></li>
+            </ul>
+        </aside>
+    </section>
+    <footer>
+        <p>&copy; 2024 Yousuf Ali all rights reserved.</p>
+    </footer>
+</body>
+</html>
