@@ -1,0 +1,37 @@
+/* css comment */
+body{
+    background-color: black;
+    color: white;
+}
+img{
+    width: 20px;
+} 
+div{
+    text-align: center;
+}
+.men{
+    width: 400px;
+    background-color: rgb(141, 141, 158);
+    padding-bottom: 30px;
+    margin: 0 auto;
+    color: black;
+}
+.men h1{
+    color: antiquewhite;
+}
+.women{
+    background-color: rgb(6, 6, 186);
+    padding-bottom: 30px;
+}
+.women h1{
+    color: rgb(38, 214, 79);
+    background: red;
+    margin:10px 50px 0 50px;
+}
+#genx{
+    background-color: rgb(186, 144, 6);
+    padding-bottom: 30px;
+    width: 300px;
+    margin: 0 auto;
+    color: white;
+}
