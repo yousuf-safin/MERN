@@ -1,0 +1,51 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Sizing</title>
+ </head>
+ <style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    html{
+        font-size: 10px; /* 1rem = 10px */
+    }
+    .box{
+        border: 2px solid black;
+        /* width: 1920px; */
+        width: 80vw; /* 80% of the vw=viewport width */
+        height: 20vh; /* 20% of the vh=viewport height */
+        margin : auto;
+        background-color: lightblue;
+        box-sizing: border-box;
+    }
+    .container{
+        border: 2px solid black;
+        /* width: 1920px; */
+        width: 80vw;
+        height: 75vh;
+        margin : 23px auto;
+        background-color: lightcoral;
+        box-sizing: border-box;
+        font-size: 16px;
+    }
+    .container p{
+        padding: 10px;
+        /* font-size: 1.2em;  */
+        /* 1.2 times the default [from the container] font size */
+        font-size: 1.5rem; 
+        /* rem is relative to the root font size */
+    }
+ </style>
+ <body>
+    <div class="box">
+        <h2>This is a Box</h2>
+    </div>
+    <div class="container">
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur libero tempora deleniti iusto doloribus? Quasi voluptatum temporibus dolore laborum omnis tempore totam quae non amet eius nisi, modi vero iusto. Reprehenderit molestias aspernatur harum perferendis, accusamus atque veniam repellat eaque quaerat, dolor sint laboriosam itaque voluptas quod voluptatibus possimus eius consectetur architecto sit repudiandae alias blanditiis?</p>
+    </div>
+ </body>
+ </html>
