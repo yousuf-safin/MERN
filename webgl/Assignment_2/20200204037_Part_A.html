@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>CSE4204 Assignment2 PartA</title>
+</head>
+
+<body>
+    <canvas id="mycanvas" width="650" height="650"></canvas>
+    <script>
+        var canvas = document.getElementById("mycanvas");
+        var gl = canvas.getContext("webgl");
+
+
+        var vertexShaderSource = `
+            attribute vec3 a_coords;   
+            uniform mat4 u_matrix;
+            void main() {
+                gl_Position = u_matrix * vec4(a_coords, 1.0); 
+                gl_PointSize = 10.0; 
+            }`;
+
+
+        var fragmentShaderSource = `
+            precision mediump float;
+            uniform vec3 u_color;
+            void main() {
+                gl_FragColor = vec4(u_color, 1.0);
+            }`;
+
+        var vtx_shader = gl.createShader(gl.VERTEX_SHADER);
+        var frag_shader = gl.createShader(gl.FRAGMENT_SHADER);
+
+        gl.shaderSource(vtx_shader, vertexShaderSource);
+        gl.shaderSource(frag_shader, fragmentShaderSource);
+
+        gl.compileShader(vtx_shader);
+        gl.compileShader(frag_shader);
+
+        var prog = gl.createProgram();
+        gl.attachShader(prog, vtx_shader);
+        gl.attachShader(prog, frag_shader);
+        gl.linkProgram(prog);
+        gl.useProgram(prog);
+
+        var u_color_loc = gl.getUniformLocation(prog, "u_color");
+        var u_matrix_loc = gl.getUniformLocation(prog, "u_matrix");
+        gl.uniformMatrix4fv(u_matrix_loc, false, [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]);
+
+        var a_coords_buffer = gl.createBuffer();
+        gl.bindBuffer(gl.ARRAY_BUFFER, a_coords_buffer);
+        gl.enableVertexAttribArray(a_coords_loc);
+
+        var a_coords_loc = gl.getAttribLocation(prog, "a_coords");
+        gl.vertexAttribPointer(a_coords_loc, 3, gl.FLOAT, false, 0, 0);
+
+        var numPoints = 100;
+        var colors = [
+            [0.1, 0.1, 0.7],
+            [0.3, 0.3, 1.0],
+            [0.5, 0.8, 1.0],
+            [0.1, 0.7, 0.1],
+            [0.5, 1.0, 0.5],
+            [0.9, 0.9, 0.2],
+            [1.0, 0.5, 0.0],
+            [1.0, 0.2, 0.2],
+            [0.8, 0.5, 0.7]
+        ];
+        var radii = [0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1];
+        var currentCircle = 0;
+
+        function drawCircle(radius, color) {
+            var vertices = [];
+            for (var i = 0; i < numPoints; i++) {
+                var angle = 2 * Math.PI * i / numPoints;
+                vertices.push(radius * Math.cos(angle), radius * Math.sin(angle), 0.0);
+            }
+            gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);
+            gl.uniform3fv(u_color_loc, color);
+            gl.drawArrays(gl.TRIANGLE_FAN, 0, numPoints);
+        }
+
+        canvas.onclick = function () {
+            if (currentCircle < colors.length) {
+                gl.clear(gl.COLOR_BUFFER_BIT);
+                for (var i = 0; i <= currentCircle; i++) {
+                    drawCircle(radii[i], colors[i]);
+                }
+                currentCircle++;
+            }
+        };
+
+
+        gl.clearColor(1.0, 1.0, 0.8, 1.0);
+        gl.clear(gl.COLOR_BUFFER_BIT);
+    </script>
+</body>
+
+</html>
