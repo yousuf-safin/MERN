@@ -3,66 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSS Overflow Property</title>
+    <title>CSS Layout Examples</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #ecf0f1;
+            --accent-color: #9b59b6;
+            --spacing: 1rem;
+        }
+
+        .box {
+            width: 100%;
+            max-width: 500px;
+            height: 150px;
+            border: 2px solid var(--primary-color);
+            margin: var(--spacing) auto;
+            padding: var(--spacing);
+            overflow: auto;
+            border-radius: 8px;
+        }
+
+        .flex-container {
+            display: flex;
+            gap: var(--spacing);
+            margin: var(--spacing);
+            padding: var(--spacing);
+            border: 2px solid var(--primary-color);
+            border-radius: 8px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            flex: 1 1 200px;
+            min-height: 100px;
+            padding: var(--spacing);
+            border: 2px solid var(--primary-color);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-one {
+            background-color: #e67e22;
+        }
+
+        .card-two {
+            background-color: #f1c40f;
+        }
+
+        .card-three {
+            background-color: var(--accent-color);
+        }
+
+        h1, h2 {
+            color: var(--primary-color);
+            margin: 0;
+        }
+
+        @media (max-width: 600px) {
+            .flex-container {
+                flex-direction: column;
+            }
+            
+            .card {
+                flex-basis: auto;
+            }
+        }
+    </style>
 </head>
-<style>
-    .box{
-        width: 500px;
-        height: 150px;
-        border:2px solid black;
-        overflow:  hidden auto;
-        /* overflow: scroll; */
-        /* white-space: nowrap; */
-        /* overflow: auto; It will hide the scroll bar */
-        margin-bottom: 20px;
-    }
-    /* .box p{
-    text-overflow: ellipsis;
-    overflow: hidden;
-    } */
-     .side{
-        border: 2px solid black;
-        display: flex;
-        margin: 20px;
-     }
-     .one{
-        border: 2px solid black;
-        width: 200px;
-        height: 100px;
-        margin-bottom: 10px;
-        margin: 5px;
-        background-color: saddlebrown;
-     }
-     .two{
-        border: 2px solid black;
-        width: 200px;
-        height: 100px;
-        margin-bottom: 10px;
-        margin: 5px;
-        background-color: rgb(225, 182, 152);
-     }
-     .three{
-        border: 2px solid black;
-        width: 200px;
-        height: 100px;
-        margin: 5px;
-        background-color: blueviolet;
-     }
-</style>
 <body>
     <div class="box">
-        <h2>Hello Vaishnav</h2>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Incidunt beatae est saepe. Vel, blanditiis consequuntur quo quidem deleniti reprehenderit quae beatae obcaecati culpa? Magnam est reiciendis quae mollitia. Quia eveniet obcaecati ex sapiente! Voluptatum placeat accusamus iste amet nisi magnam? Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis quo ipsum assumenda corporis in! Maiores molestias corrupti maxime? Facilis, sed rem! Quaerat voluptas inventore adipisci nesciunt ipsa numquam minima officia vitae quis! Repudiandae, quas autem.</p>
+        <h2>Responsive Content Container</h2>
+        <p>This container demonstrates scrollable content. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam voluptates, quod, quia, voluptatibus quae voluptatem quibusdam voluptatum quos quidem nemo quas. Quisquam, quae voluptatem quibusdam voluptatum quos quidem nemo quas.</p>
+        <p>Additional content to ensure scrolling: Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam voluptates, quod, quia, voluptatibus quae voluptatem quibusdam voluptatum quos quidem nemo quas. Quisquam, quae voluptatem quibusdam voluptatum quos quidem nemo quas.</p>
     </div>
-    <div class="side">
-        <div class="one">
-            <h1>One</h1>
+
+    <div class="flex-container">
+        <div class="card card-one">
+            <h2>Card One</h2>
         </div>
-        <div class="two">
-            <h1>two</h1>
+        <div class="card card-two">
+            <h2>Card Two</h2>
         </div>
-        <div class="three">
-            <h1>three</h1>
+        <div class="card card-three">
+            <h2>Card Three</h2>
         </div>
     </div>
 </body>
