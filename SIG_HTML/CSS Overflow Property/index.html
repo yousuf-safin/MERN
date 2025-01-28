@@ -2,99 +2,77 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSS Layout Examples</title>
+    <title>Simple Layout</title>
     <style>
-        :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #ecf0f1;
-            --accent-color: #9b59b6;
-            --spacing: 1rem;
-        }
-
-        .box {
-            width: 100%;
-            max-width: 500px;
+        .content-box {
+            width: 500px;
             height: 150px;
-            border: 2px solid var(--primary-color);
-            margin: var(--spacing) auto;
-            padding: var(--spacing);
+            border: 2px solid #333;
             overflow: auto;
-            border-radius: 8px;
+            margin: 20px;
+            padding: 10px;
         }
 
-        .flex-container {
+        .container {
             display: flex;
-            gap: var(--spacing);
-            margin: var(--spacing);
-            padding: var(--spacing);
-            border: 2px solid var(--primary-color);
-            border-radius: 8px;
-            justify-content: center;
-            flex-wrap: wrap;
+            margin: 20px;
+            gap: 10px;
         }
 
-        .card {
-            flex: 1 1 200px;
-            min-height: 100px;
-            padding: var(--spacing);
-            border: 2px solid var(--primary-color);
-            border-radius: 8px;
+        .item {
+            width: 200px;
+            height: 100px;
+            border: 2px solid #333;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: transform 0.3s ease;
         }
 
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .card-one {
-            background-color: #e67e22;
-        }
-
-        .card-two {
-            background-color: #f1c40f;
-        }
-
-        .card-three {
-            background-color: var(--accent-color);
-        }
-
-        h1, h2 {
-            color: var(--primary-color);
-            margin: 0;
-        }
-
-        @media (max-width: 600px) {
-            .flex-container {
-                flex-direction: column;
-            }
-            
-            .card {
-                flex-basis: auto;
-            }
-        }
+        .red { background-color: #ff9999; }
+        .yellow { background-color: #ffff99; }
+        .purple { background-color: #cc99ff; }
     </style>
 </head>
 <body>
-    <div class="box">
-        <h2>Responsive Content Container</h2>
-        <p>This container demonstrates scrollable content. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam voluptates, quod, quia, voluptatibus quae voluptatem quibusdam voluptatum quos quidem nemo quas. Quisquam, quae voluptatem quibusdam voluptatum quos quidem nemo quas.</p>
-        <p>Additional content to ensure scrolling: Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam voluptates, quod, quia, voluptatibus quae voluptatem quibusdam voluptatum quos quidem nemo quas. Quisquam, quae voluptatem quibusdam voluptatum quos quidem nemo quas.</p>
+    <div class="content-box">
+        <h2>Simple Content Box</h2>
+        <p>This is a simple scrollable content box. Resize your browser window to see how the content behaves. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam voluptates, quod, quia, voluptatibus quae voluptatem quibusdam voluptatum quos quidem nemo quas.</p>
     </div>
 
-    <div class="flex-container">
-        <div class="card card-one">
-            <h2>Card One</h2>
-        </div>
-        <div class="card card-two">
-            <h2>Card Two</h2>
-        </div>
-        <div class="card card-three">
-            <h2>Card Three</h2>
-        </div>
+    <div class="container">
+        <div class="item red"><h3>Item 1</h3></div>
+        <div class="item yellow"><h3>Item 2</h3></div>
+        <div class="item purple"><h3>Item 3</h3></div>
     </div>
 </body>
 </html>
+
+<!-- Key simplifications:
+
+Removed CSS variables and complex selectors
+
+Simplified color names and values
+
+Reduced number of class names
+
+Removed hover effects and transitions
+
+Simplified layout structure
+
+Removed responsive media queries
+
+Used basic flexbox properties
+
+Simplified content structure
+
+This version maintains the core functionality while being easier to understand for beginners. It still demonstrates:
+
+Overflow handling
+
+Flexbox layout
+
+Basic styling
+
+Box model concepts
+
+Simple color usage -->
