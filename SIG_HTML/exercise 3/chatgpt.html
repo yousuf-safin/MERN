@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lago di Braies Card</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .card {
+      width: 400px;
+      background-color: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 20px;
+    }
+
+    .card-tags {
+      display: flex;
+      gap: 10px;
+    }
+
+    .tag {
+      background-color: #4CAF50;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    h2 {
+      margin-top: 10px;
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .card-description {
+      font-size: 14px;
+      color: #555;
+      margin: 10px 0;
+    }
+
+    .read-more {
+      background-color: #007BFF;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.3s;
+    }
+
+    .read-more:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <img src="../../HTML/img/lookove.png" alt="Lago di Braies" class="card-image">
+    <div class="card-content">
+      <div class="card-tags">
+        <span class="tag">Nature</span>
+        <span class="tag">Lake</span>
+      </div>
+      <h2>Lago di Braies</h2>
+      <p class="card-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Consectetur sodales morbi dignissim sed diam pharetra vitae ipsum odio.</p>
+      <button class="read-more">Read More</button>
+    </div>
+  </div>
+
+</body>
+</html>

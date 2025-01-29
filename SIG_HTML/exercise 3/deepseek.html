@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nature Card</title>
+    <style>
+        .card {
+            width: 500px;
+            height: 500px;
+            padding: 40px;
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+                        url('https://images.unsplash.com/photo-1587502536575-6dfba0a6e017') center/cover;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .category {
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: 32px;
+            margin: 0 0 20px 0;
+            font-weight: bold;
+        }
+
+        .text {
+            font-size: 16px;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .read-more {
+            align-self: flex-start;
+            text-decoration: none;
+            color: white;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 2px;
+            border: 2px solid white;
+            padding: 10px 20px;
+            margin-top: 20px;
+        }
+
+        .read-more:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <span class="category">Nature</span>
+        <h1>Lago di Braies</h1>
+        <p class="text">
+            Lorem ipsum dolor sit amet,<br>
+            consectetur adipiscing elit. Consectetur<br>
+            sodales morbi dignissim sed diam<br>
+            pharetra vitae ipsum odio.
+        </p>
+        <a href="#" class="read-more">Read More</a>
+    </div>
+</body>
+</html>
