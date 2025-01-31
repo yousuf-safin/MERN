@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>3D Hexagonal Prism</title>
+    <style>
+        canvas { width: 600px; height: 600px; }
+    </style>
+</head>
+<body>
+<canvas id="webglcanvas"></canvas>
+<script>
+    const canvas = document.getElementById('webglcanvas');
+    const gl = canvas.getContext('webgl');
+
+    const vertexShaderSource = `
+        attribute vec3 coordinates;
+        uniform mat4 transformationMatrix;
+        void main(void) {
+            gl_Position = transformationMatrix * vec4(coordinates, 1.0);
+        }
+    `;
+
+    const fragmentShaderSource = `
+        precision mediump float;
+        void main(void) {
+            gl_FragColor = vec4(1.0, 0.5, 0.0, 1.0); // Use orange color
+        }
+    `;
+
+    const vertexShader = gl.createShader(gl.VERTEX_SHADER);
+    gl.shaderSource(vertexShader, vertexShaderSource);
+    gl.compileShader(vertexShader);
+
+    const fragmentShader = gl.createShader(gl.FRAGMENT_SHADER);
+    gl.shaderSource(fragmentShader, fragmentShaderSource);
+    gl.compileShader(fragmentShader);
+
+    const shaderProgram = gl.createProgram();
+    gl.attachShader(shaderProgram, vertexShader);
+    gl.attachShader(shaderProgram, fragmentShader);
+    gl.linkProgram(shaderProgram);
+    gl.useProgram(shaderProgram);
+
+    const vertices = new Float32Array([
+        // Define vertices for hexagonal prism here
+    ]);
+
+    const indices = new Uint16Array([
+        // Define indices for hexagonal prism here
+    ]);
+
+    const vertexBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);
+
+    const indexBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuffer);
+    gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(indices), gl.STATIC_DRAW);
+
+    gl.vertexAttribPointer(shaderProgram.coordinates = gl.getAttribLocation(shaderProgram, 'coordinates'), 3, gl.FLOAT, false, 0, 0);
+    gl.enableVertexAttribArray(shaderProgram.coordinates);
+
+    let transformationMatrix = mat4.create();
+
+    document.addEventListener('keydown', function(event) {
+        switch (event.key) {
+            case 'a': // Rotate left
+                mat4.rotateY(transformationMatrix, transformationMatrix, -Math.PI / 180 * 10);
+                break;
+            case 's': // Rotate right
+                mat4.rotateY(transformationMatrix, transformationMatrix, Math.PI / 180 * 10);
+                break;
+            case 'w': // Rotate up
+                mat4.rotateX(transformationMatrix, transformationMatrix, -Math.PI / 180 * 10);
+                break;
+            case 'z': // Rotate down
+                mat4.rotateX(transformationMatrix, transformationMatrix, Math.PI / 180 * 10);
+                break;
+            case '+': // Scale up
+                mat4.scale(transformationMatrix, transformationMatrix, [1.1, 1.1, 1.1]);
+                break;
+            case '-': // Scale down
+                mat4.scale(transformationMatrix, transformationMatrix, [0.9, 0.9, 0.9]);
+                break;
+        }
+        draw();
+    });
+
+    function draw() {
+        gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+        gl.enable(gl.DEPTH_TEST);
+        gl.uniformMatrix4fv(gl.getUniformLocation(shaderProgram, 'transformationMatrix'), false, transformationMatrix);
+        gl.drawElements(gl.TRIANGLES, indices.length, gl.UNSIGNED_SHORT, 0);
+    }
+
+    gl.clearColor(0.0, 0.0, 0.0, 1.0);
+    draw();
+</script>
+</body>
+</html>
