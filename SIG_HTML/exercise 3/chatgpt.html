@@ -1,96 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lago di Braies Card</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Card Design</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Baloo+Bhai+2&family=Poppins:wght@300&display=swap');
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: gray;
+            padding: 45px;
+            display: flex;
+        }
+        .card{
+            background-color: white;
+            width: 198px; 
+            border-radius: 7px;
+            padding: 0 0 34px 0;
+            margin: 4px;
+        }
+        
+        .image{
+            padding: 5px;
+        }
+        .image img{
+            border-radius: 7px;
+        }
+        .content{
+            padding: 7px 13px; 
+            font-family: 'Poppins', sans-serif;
+        }
+       
+        .content p{
+            font-size: 9px;
+            color: gray;
+        }
+        .capsules{
+            padding: 0 28px 0 14px;
+        }
+        .capsules span{
+            border: 1px solid gray;
+            padding: 0px 6px;
+            border-radius: 7px;
+            font-size: 8px;
+            font-family: 'Baloo Bhai 2', sans-serif; 
 
-    .card {
-      width: 400px;
-      background-color: white;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
+        }
+        .button{
+            text-align: center;
+        }
+        .button button{
+            padding: 7px 15px;
+            border-radius: 15px;
+            background-color: rgb(216, 236, 253);
+            color: rgb(14, 150, 234);
+            font-size: 10px;
+            margin-top: 7px;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
 
-    .card-image {
-      width: 90%;
-      height: 200px;
-      object-fit: cover;
-      display: block;
-        margin: 0 auto;
-    }
-
-    .card-content {
-      padding: 20px;
-    }
-
-    .card-tags {
-      display: flex;
-      gap: 10px;
-    }
-
-    .tag {
-      background-color: #4CAF50;
-      color: white;
-      padding: 5px 10px;
-      border-radius: 5px;
-      font-size: 14px;
-    }
-
-    h2 {
-      margin-top: 10px;
-      font-size: 24px;
-      font-weight: bold;
-      color: #333;
-    }
-
-    .card-description {
-      font-size: 14px;
-      color: #555;
-      margin: 10px 0;
-    }
-
-    .read-more {
-      background-color: #007BFF;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 14px;
-      transition: background-color 0.3s;
-    }
-
-    .read-more:hover {
-      background-color: #0056b3;
-    }
-  </style>
+        .button button:hover{
+            background-color: rgb(194, 225, 246);
+            color: rgb(10, 136, 214);
+        }
+    </style>
 </head>
 <body>
+    <div class="card"> 
+        <div class="image">
+            <img width="188" src="https://images.pexels.com/photos/3880179/pexels-photo-3880179.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="">
+        </div>
 
-  <div class="card">
-    <img src="../../HTML/img/lookove.png" alt="Lago di Braies" class="card-image">
-    <div class="card-content">
-      <div class="card-tags">
-        <span class="tag">Nature</span>
-        <span class="tag">Lake</span>
-      </div>
-      <h2>Lago di Braies</h2>
-      <p class="card-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Consectetur sodales morbi dignissim sed diam pharetra vitae ipsum odio.</p>
-      <button class="read-more">Read More</button>
+        <div class="capsules">
+            <span>Nature</span>
+            <span>Lake</span>
+        </div>
+        <div class="content">
+            <h2>Yousuf</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas nemo numquam vel cumque ullam alias sequi suscipit velit! Enim cumque aperiam tempore tenetur?</p>
+        </div>
+        <div class="button">
+            <button>Read More</button>
+        </div>
+
     </div>
-  </div>
 
+    <!-- <div class="card"> 
+        <div class="image">
+            <img width="188" src="https://images.pexels.com/photos/3880179/pexels-photo-3880179.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="">
+        </div>
+
+        <div class="capsules">
+            <span>Nature</span>
+            <span>Lake</span>
+        </div>
+        <div class="content">
+            <h2>Harry</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas nemo numquam vel cumque ullam alias sequi suscipit velit! Enim cumque aperiam tempore tenetur?</p>
+        </div>
+        <div class="button">
+            <button>Read More</button>
+        </div>
+
+    </div>
+
+    <div class="card"> 
+        <div class="image">
+            <img width="188" src="https://images.pexels.com/photos/3880179/pexels-photo-3880179.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="">
+        </div>
+
+        <div class="capsules">
+            <span>Nature</span>
+            <span>Lake</span>
+        </div>
+        <div class="content">
+            <h2>Harry</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas nemo numquam vel cumque ullam alias sequi suscipit velit! Enim cumque aperiam tempore tenetur?</p>
+        </div>
+        <div class="button">
+            <button>Read More</button>
+        </div> -->
+
+    </div>
 </body>
 </html>
