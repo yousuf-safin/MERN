@@ -1,0 +1,93 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: rgb(172, 167, 167);
+}
+header {
+    position: sticky;
+    top: 0;
+}
+nav{
+    background-color: rgb(0, 0, 0);
+    padding: 10px;
+    /* position: sticky; */
+    height: 40px;
+}
+nav ul{
+    background-color: rgb(0, 0, 0);
+    text-align: center;
+    padding: 10px;
+}
+nav ul li{
+    display: inline;
+    list-style-type: none;
+    margin-right: 10px;
+}
+ul li a{
+    text-decoration: none;
+    color: white;
+    font-size: large;
+}
+
+.container{
+    background-color: green;
+            margin: 12px 34px;
+            padding: 55px 23px;
+            text-align: center;
+}
+
+.blue_box{
+    background-color: aquamarine;
+    height: 60vh;
+    width: 45%;
+    display: inline-block;
+    margin: 0 10px;
+}
+.Green_box{
+    background-color: rgb(0, 17, 128);
+    height: 60vh;
+    width: 45%;
+    display: inline-block;
+    margin: 0 10px;
+}
+.textbox{
+    background-color: seashell;
+    padding: 34px;
+    height: 30vh;
+            border: 2px solid white;
+            margin: 50px ;
+            border-radius: 13px;
+            text-align: center;
+}
+h1 q{
+    color: rgb(0, 0, 0);
+    font-size: 30px;
+    padding-top: 14vh;
+}
+h1{
+    color: rgb(138, 135, 135);
+    font-size: 30px;
+    padding-top: 14vh;
+}
+.circle{
+    height: 32px;
+    width: 32px;
+    position: fixed;
+    background-color: orange;
+    right: 23px;
+    bottom: 23px;
+    border-radius: 60px;
+}
+footer{
+    height: 60px;
+    background-color: sienna;
+    color: white;
+    font-size: 18px;
+    text-align: center;
+   
+}
+footer p{
+    padding: 20px;
+}
