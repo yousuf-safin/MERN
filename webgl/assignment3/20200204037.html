@@ -2,15 +2,10 @@
 <html>
 <title>Assignment 3: Hexagonal Prism</title>
 <canvas id="webglcanvas" width="600" height="600"></canvas>
-<body>
-    
-
 <script>
-    // WebGL Context Setup
     const canvas = document.getElementById('webglcanvas');
     const gl = canvas.getContext('webgl');
 
-    // Vertex Shader Source
     const vertexShaderSource = `
         attribute vec3 a_coords;
         attribute vec3 a_color;
@@ -24,7 +19,6 @@
         }
     `;
 
-    // Fragment Shader Source
     const fragmentShaderSource = `
         precision mediump float;
         varying vec3 v_color;
@@ -33,7 +27,6 @@
         }
     `;
 
-    // Compile Shaders and Link Program
     const vsh = gl.createShader(gl.VERTEX_SHADER);
     gl.shaderSource(vsh, vertexShaderSource);
     gl.compileShader(vsh);
@@ -48,13 +41,11 @@
     gl.linkProgram(prog);
     gl.useProgram(prog);
 
-    // Define Hexagon Vertices (Top at z=0.5, Bottom at z=-0.5)
     const vertices = [];
     const colors = [];
     const numSides = 6;
     const radius = 0.5;
 
-    // Generate Top Hexagon (z=0.5)
     for (let i = 0; i < numSides; i++) {
         const angle = (i * 2 * Math.PI) / numSides;
         const x = radius * Math.cos(angle);
@@ -63,7 +54,6 @@
         colors.push(1.0, 0.0, 0.0); // Red for top face
     }
 
-    // Generate Bottom Hexagon (z=-0.5)
     for (let i = 0; i < numSides; i++) {
         const angle = (i * 2 * Math.PI) / numSides;
         const x = radius * Math.cos(angle);
@@ -72,25 +62,27 @@
         colors.push(0.0, 1.0, 0.0); // Green for bottom face
     }
 
-    // Generate Rectangular Side Faces with Unique Colors
+    // Updated side colors
     const sideColors = [
-        [0.0, 0.0, 1.0], [1.0, 1.0, 0.0], [1.0, 0.0, 1.0],
-        [0.0, 1.0, 1.0], [0.5, 0.5, 0.5], [0.8, 0.2, 0.4]
+        [1.0, 0.5, 0.0], // Orange
+        [0.5, 0.0, 1.0], // Purple
+        [0.0, 0.5, 1.0], // Light Blue
+        [1.0, 0.0, 0.5], // Pink
+        [0.5, 1.0, 0.0], // Lime
+        [0.0, 1.0, 0.5]  // Teal
     ];
+
     for (let i = 0; i < numSides; i++) {
         const next = (i + 1) % numSides;
-        // Add vertices for two triangles per face
         vertices.push(
-            ...vertices.slice(i * 3, i * 3 + 3),            // Top current
-            ...vertices.slice(next * 3, next * 3 + 3),       // Top next
-            ...vertices.slice((i + numSides) * 3, (i + numSides) * 3 + 3), // Bottom current
-            ...vertices.slice((next + numSides) * 3, (next + numSides) * 3 + 3) // Bottom next
+            vertices[i * 3], vertices[i * 3 + 1], 0.5,
+            vertices[next * 3], vertices[next * 3 + 1], 0.5,
+            vertices[next * 3 + numSides * 3], vertices[next * 3 + 1 + numSides * 3], -0.5,
+            vertices[i * 3 + numSides * 3], vertices[i * 3 + 1 + numSides * 3], -0.5
         );
-        // Assign unique color to each face
         colors.push(...sideColors[i], ...sideColors[i], ...sideColors[i], ...sideColors[i]);
     }
 
-    // Buffer Setup
     const vertexBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);
@@ -99,24 +91,24 @@
     gl.bindBuffer(gl.ARRAY_BUFFER, colorBuffer);
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(colors), gl.STATIC_DRAW);
 
-    // Index Buffer for Faces (Triangles)
     const indices = [];
-    // Top and Bottom Faces (each has 6 triangles)
     for (let i = 0; i < numSides; i++) {
-        indices.push(i, (i + 1) % numSides, numSides + i);
+        indices.push(0, i, (i + 1) % numSides);
     }
-    // Side Faces (12 triangles)
-    const baseIndex = 2 * numSides; // Offset after top/bottom vertices
+    for (let i = 0; i < numSides; i++) {
+        indices.push(numSides, numSides + i, numSides + ((i + 1) % numSides));
+    }
+    const baseIndex = 2 * numSides;
     for (let i = 0; i < numSides; i++) {
         const offset = baseIndex + i * 4;
-        indices.push(offset, offset + 1, offset + 2, offset + 1, offset + 2, offset + 3);
+        indices.push(offset, offset + 1, offset + 2);
+        indices.push(offset, offset + 2, offset + 3);
     }
 
     const indexBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuffer);
     gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(indices), gl.STATIC_DRAW);
 
-    // Attribute Locations
     const a_coords = gl.getAttribLocation(prog, 'a_coords');
     gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
     gl.vertexAttribPointer(a_coords, 3, gl.FLOAT, false, 0, 0);
@@ -127,16 +119,13 @@
     gl.vertexAttribPointer(a_color, 3, gl.FLOAT, false, 0, 0);
     gl.enableVertexAttribArray(a_color);
 
-    // Uniform Locations
     const u_rotX = gl.getUniformLocation(prog, 'u_rotX');
     const u_rotY = gl.getUniformLocation(prog, 'u_rotY');
     const u_scale = gl.getUniformLocation(prog, 'u_scale');
 
-    // Initial Transformations
     let rotX = 0, rotY = 0, scale = 1.0;
 
     function updateTransformations() {
-        // Rotation Matrices
         const radX = rotX * Math.PI / 180;
         const rotXMat = new Float32Array([
             1, 0, 0, 0,
@@ -153,7 +142,6 @@
             0, 0, 0, 1
         ]);
 
-        // Scale Matrix
         const scaleMat = new Float32Array([
             scale, 0, 0, 0,
             0, scale, 0, 0,
@@ -166,13 +154,12 @@
         gl.uniformMatrix4fv(u_scale, false, scaleMat);
     }
 
-    // Key Event Listeners
     document.addEventListener('keydown', (e) => {
         switch (e.key.toLowerCase()) {
-            case 'a': rotY -= 5; break;  // Y-axis -
-            case 's': rotY += 5; break;  // Y-axis +
-            case 'w': rotX -= 5; break;  // X-axis -
-            case 'z': rotX += 5; break;  // X-axis +
+            case 'a': rotY -= 5; break;
+            case 's': rotY += 5; break;
+            case 'w': rotX -= 5; break;
+            case 'z': rotX += 5; break;
             case '+': scale *= 1.1; break;
             case '-': scale *= 0.9; break;
         }
@@ -180,7 +167,6 @@
         draw();
     });
 
-    // Draw Function
     function draw() {
         gl.clearColor(0.9, 0.9, 0.9, 1.0);
         gl.enable(gl.DEPTH_TEST);
@@ -188,9 +174,7 @@
         gl.drawElements(gl.TRIANGLES, indices.length, gl.UNSIGNED_SHORT, 0);
     }
 
-    // Initial Draw
     updateTransformations();
     draw();
 </script>
-</body>
 </html>
