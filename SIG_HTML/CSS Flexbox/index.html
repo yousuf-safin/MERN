@@ -17,23 +17,48 @@
         flex-direction: row;
         flex-wrap: wrap;
         align-content: flex-start;
+        row-gap: 10px;
+        column-gap: 10px;
         /* there is no justify items in flexbox */
         flex-flow: row wrap;
-        gap: 10px;
+
+        /* gap: 10px; */
     }
     .item{
         width: 90px;
         height: 90px;
         background-color: rgb(180, 0, 180);
         border: 2px solid black;
-        margin: 10px;
+        /* margin: 10px; */
         text-align: center;
         color: white;
+    }
+    .order{
+        order: 1;
+    }
+    .order1{
+        order: 2;
+    }
+    .item1{
+        /* flex-grow: 4; */
+        align-self: flex-end;
     }
 </style>
 <body>
     <div class="container">
-        <div class="item">1</div>
+        <div class="item item1">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+        <div class="item">6</div>
+        <!-- <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+        <div class="item order">69</div>
+        <div class="item order1">199</div>
         <div class="item">2</div>
         <div class="item">3</div>
         <div class="item">4</div>
@@ -56,19 +81,7 @@
         <div class="item">3</div>
         <div class="item">4</div>
         <div class="item">5</div>
-        <div class="item">6</div>
-        <div class="item">1</div>
-        <div class="item">2</div>
-        <div class="item">3</div>
-        <div class="item">4</div>
-        <div class="item">5</div>
-        <div class="item">6</div>
-        <div class="item">1</div>
-        <div class="item">2</div>
-        <div class="item">3</div>
-        <div class="item">4</div>
-        <div class="item">5</div>
-        <div class="item">6</div>
+        <div class="item">6</div> -->
 
         
     </div>
