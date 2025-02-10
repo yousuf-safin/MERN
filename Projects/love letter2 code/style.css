@@ -22,9 +22,7 @@
   border-left: 140px solid transparent;
   border-right: 140px solid transparent;
   border-bottom: 82px solid transparent;
-  /* a little smaller */
   border-top: 98px solid #d9534f; /* Same romantic red */
-  /* a little larger */
   transform-origin: top;
   pointer-events: none;
 }
@@ -70,10 +68,9 @@
 
 .words.line1 {
   top: 10%;
-  font-size: 0.5rem;
+  font-size: 0.7rem;
   width: 20%;
   height: 7%;
-  font-size: 0.7rem;
 }
 
 .words.line2 {
@@ -156,7 +153,6 @@
 
 .close .heart {
   opacity: 0;
-  -webkit-animation: none;
   animation: none;
 }
 
@@ -164,11 +160,8 @@
   left: 20%;
   transform: scale(0.6);
   opacity: 1;
-  -webkit-animation: slideUp 4s linear 1, sideSway 2s ease-in-out 4 alternate;
-  -moz-animation: slideUp 4s linear 1, sideSway 2s ease-in-out 4 alternate;
-  -webkit-animation-fill-mode: forwards;
+  animation: slideUp 4s linear 1, sideSway 2s ease-in-out 4 alternate;
   animation-fill-mode: forwards;
-  -webkit-animation-delay: 0.7s;
   animation-delay: 0.7s;
 }
 
@@ -176,11 +169,8 @@
   left: 55%;
   transform: scale(1);
   opacity: 1;
-  -webkit-animation: slideUp 5s linear 1, sideSway 4s ease-in-out 2 alternate;
-  -moz-animation: slideUp 5s linear 1, sideSway 4s ease-in-out 2 alternate;
-  -webkit-animation-fill-mode: forwards;
+  animation: slideUp 5s linear 1, sideSway 4s ease-in-out 2 alternate;
   animation-fill-mode: forwards;
-  -webkit-animation-delay: 0.7s;
   animation-delay: 0.7s;
 }
 
@@ -188,22 +178,11 @@
   left: 10%;
   transform: scale(0.8);
   opacity: 1;
-  -webkit-animation: slideUp 7s linear 1, sideSway 2s ease-in-out 6 alternate;
-  -moz-animation: slideUp 7s linear 1, sideSway 2s ease-in-out 6 alternate;
-  -webkit-animation-fill-mode: forwards;
+  animation: slideUp 7s linear 1, sideSway 2s ease-in-out 6 alternate;
   animation-fill-mode: forwards;
-  -webkit-animation-delay: 0.7s;
   animation-delay: 0.7s;
 }
 
-@-webkit-keyframes slideUp {
-  0% {
-    top: 0;
-  }
-  100% {
-    top: -600px;
-  }
-}
 @keyframes slideUp {
   0% {
     top: 0;
@@ -212,14 +191,7 @@
     top: -600px;
   }
 }
-@-webkit-keyframes sideSway {
-  0% {
-    margin-left: 0px;
-  }
-  100% {
-    margin-left: 50px;
-  }
-}
+
 @keyframes sideSway {
   0% {
     margin-left: 0px;
@@ -228,6 +200,7 @@
     margin-left: 50px;
   }
 }
+
 body {
   background-color: #f0e6f6; /* Soft lavender for a romantic, dreamy feel */
 }
@@ -245,6 +218,7 @@ body {
   font-style: normal;
   transition: all 0.1s linear;
   -webkit-appearance: none;
+  appearance: none;
   background-color: transparent;
   border: solid 2px #d9534f;
   border-radius: 4px;
