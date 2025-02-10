@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Grid</title>
+</head>
+<style>
+    /* placcecontent: center; is the cimbinatio of align-items: center; and justify-content: center; */
+    .container{
+        border: 2px solid green;
+        display: grid;
+        grid-template-areas: "nav nav nav"
+                            "side article article"
+                            "footer footer footer";
+    }
+    .items{
+        height: 50px;
+        border: 2px solid red;
+    }
+    .item1{
+        grid-area: nav;
+        background-color: blueviolet;
+        color: white;
+    }
+    .item2{
+        grid-area: side;
+        background-color: chartreuse;
+    }
+    .item3 {
+        grid-area: article;
+        background-color: coral;
+    }
+    .item4{
+        grid-area: footer;
+        background-color: darkcyan;
+    }
+    .item5{
+        grid-area: footer;
+        background-color: darkgoldenrod;
+    }
+</style>
+<body>
+    <div class="container">
+        <div class="items item1">1</div>
+        <div class="items item2">2</div>
+        <div class="items item3">3</div>
+        <div class="items item4">4</div>
+        <div class="items item5">5</div>
+    </div>
+</body>
+</html>
