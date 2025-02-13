@@ -7,15 +7,36 @@
     <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
-    <div class="login-container">
-        <h2>Login</h2>
+    
+    <div class="container">
+        <h1>Login Correctly</h1>
         <form action="php/login.php" method="POST">
-            <label>Username:</label>
-            <input type="text" name="username" required>
-            <label>Password:</label>
-            <input type="password" name="password" required>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password:</label>
+            <div class="password-container">
+                <input type="password" id="password" name="password" required>
+                <span class="toggle-password" onclick="togglePasswordVisibility()">
+                    <img src="assets/eye-icon.png" alt="Show/Hide password" style="height: 20px;">
+                </span>
+            </div>
+
             <button type="submit">Login</button>
         </form>
     </div>
+    <script>
+        function togglePasswordVisibility() {
+            var passwordInput = document.getElementById('password');
+            var toggleIcon = document.querySelector('.toggle-password img');
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.src = 'assets/eye-slash-icon.png'; // Path to your 'eye-slash' icon
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.src = 'assets/eye-icon.png'; // Path to your 'eye' icon
+            }
+        }
+    </script>
 </body>
 </html>
