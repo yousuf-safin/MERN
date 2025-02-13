@@ -1,0 +1,15 @@
+/lookovec_product_management
+  ├── /php
+  │   ├── db_connect.php
+  │   ├── login.php
+  │   ├── logout.php
+  │   ├── auth.php
+  │   ├── save_product.php
+  │   ├── fetch_products.php
+  │   ├── export_pdf.php
+  │   ├── export_excel.php
+  ├── /assets
+  │   ├── styles.css
+  ├── /uploads
+  ├── index.html (Login Page)
+  ├── dashboard.html (Form & Product List)
