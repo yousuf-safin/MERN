@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Management</title>
+    <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+    <h2>Welcome, <span id="username"></span></h2>
+    <form action="php/save_product.php" method="POST" enctype="multipart/form-data">
+        <label>Name:</label>
+        <input type="text" name="name" required>
+        <label>Price:</label>
+        <input type="number" step="0.01" name="price" required>
+        <label>Date:</label>
+        <input type="date" name="date" required>
+        <label>Quantity:</label>
+        <input type="number" name="quantity" required>
+        <label>Sold By:</label>
+        <select name="sold_by" id="sold_by"></select>
+        <label>Location:</label>
+        <input type="text" name="location" required>
+        <label>Image:</label>
+        <input type="file" name="img" accept="image/*" required>
+        <button type="submit">Save</button>
+    </form>
+
+    <h2>Product List</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Date</th>
+                <th>Quantity</th>
+                <th>Sold By</th>
+                <th>Location</th>
+                <th>Image</th>
+            </tr>
+        </thead>
+        <tbody id="product-list"></tbody>
+    </table>
+
+    <button onclick="window.location.href='php/export_pdf.php'">Download PDF</button>
+    <button onclick="window.location.href='php/export_excel.php'">Download Excel</button>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch('php/fetch_products.php')
+            .then(response => response.json())
+            .then(data => {
+                const productList = document.getElementById("product-list");
+                data.forEach(product => {
+                    const row = `<tr>
+                        <td>${product.name}</td>
+                        <td>${product.price}</td>
+                        <td>${product.date}</td>
+                        <td>${product.quantity}</td>
+                        <td>${product.sold_by}</td>
+                        <td>${product.location}</td>
+                        <td><img src="${product.img_path}" width="50"></td>
+                    </tr>`;
+                    productList.innerHTML += row;
+                });
+            });
+
+            fetch('php/auth.php')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("username").textContent = data.username;
+                document.getElementById("sold_by").innerHTML = `<option>${data.username}</option>`;
+            });
+        });
+    </script>
+</body>
+</html>
