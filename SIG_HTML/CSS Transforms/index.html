@@ -11,28 +11,44 @@
             height: 80vh;
         }
         .box{
-            width: 50px;
-            height: 50px;
+            /* width: 50px; */
+            /* height: 50px;
             background-color: salmon;
-            border: 2px solid purple;
-            display: flex;
+            border: 2px solid purple; */
+            /* display: flex;
             justify-content: center;
-            align-items: center;
-            font-size: large;
+            align-items: center; */
+            /* font-size: large; */
             /* transform: rotate(0.5turn); */
             /* transform: rotateZ(40deg); */
             /* transform: scaleX(1.2);
             transform: skew(10deg); */
-            transform: translateY(122%) scale(1.5) translateX(50%) skew(10deg);
+            /* transform: translateY(122%) scale(1.5) translateX(50%) skew(10deg); */
 
-
+            width: calc(20%);
+    margin: 20px 20px;
+    background: #942d2d;
+    cursor: pointer;
+    color: #FFF;
+    text-align: center;
+    line-height: 130px;
         }
+        .ok{
+            transform: translateX(1);
+            transition: transform 0.5s ease;
+            background-color: rgba(127, 255, 212, 0.451);
+        }
+        .box:hover .ok {
+            transform: translateX(2em);
+  }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="box">
-            Box
+            <div class="ok">
+                hello
+            </div>
         </div>
     </div>
 </body>
