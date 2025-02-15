@@ -34,6 +34,11 @@ nav{
     font-size: 12px;
     font-weight: 600;
 }
+main{
+    width: 60%;
+    margin: auto;
+    margin-bottom: 50px;
+}
 .hero{
     padding: 50px;
     text-align: center;
@@ -44,4 +49,66 @@ nav{
 }
 .hero p{
     font-size: 25px;
+}
+.hero button{
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: rgb(23, 152, 164);
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.hero button:hover{
+    background-color: rgb(14, 79, 96);
+    transition: 0.5s;
+}
+.section{
+    padding-left: 50px;
+}
+.title img{
+    height: 40px;
+    width: 100px;
+}
+.item {
+    padding: 23px;
+    background: #b9c8e7;
+    border-radius: 12px;
+    font-size: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+}
+
+.item-lang{
+    font-weight: 700;
+    text-align: center;
+    padding-bottom: 36px;
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap:12px
+}
+
+
+.btn {
+    background: #00b6d1;
+    padding: 14px 16px;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 700;
+    margin: 12px 0;
+    cursor: pointer;
+}
+.btn a{
+    text-decoration: none;
+    color: white;
+}
+@media screen and (max-width: 1145px) {
+    .grid{ 
+        grid-template-columns: 1fr; 
+    }
 }
