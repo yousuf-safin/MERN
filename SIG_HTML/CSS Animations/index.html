@@ -23,7 +23,7 @@
          animation-direction: alternate-reverse; 
         animation-play-state: paused; */
         /* animation: name duration timing-function delay iteration-count direction fill-mode; */
-        animation: identifier 1s ease-in-out 2s forwards; 
+        animation: identifier 1s ease-in-out 2s forwards, ani2 2s ease-in-out 1s 2 alternate-reverse; 
     }
     @keyframes identifier {
         from{
@@ -32,6 +32,23 @@
         to{
             background-color: green;
             transform: translateX(1000px);
+        }
+    }
+    @keyframes ani2 {
+        0%{
+            transform: rotate(90deg);
+        }
+        25%{
+            transform: rotate(180deg);
+        }
+        50%{
+            transform: rotate(270deg);
+        }
+        75%{
+            transform: rotate(360deg);
+        }
+        100%{
+            transform: rotate(450deg);
         }
     }
 </style>
