@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EX8</title>
+</head>
+<style>
+.container{
+    background-color: beige;
+    height: 80vh;
+    width: 90vw;
+    position: relative;
+}
+.box{
+    height: 80px;
+    width: 80px;
+    background-color: aqua;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    position: absolute;
+    bottom: 0px;
+    left: 0; 
+    border-radius: 50%;
+    animation: Xposition 3s linear infinite, Yposition 1s ease-out infinite alternate, text 2s ease-in-out 1s forwards;
+}
+@keyframes  Xposition {
+    from{
+        left: 0;
+    }
+    to{
+        left: 90%;
+    }
+}
+@keyframes  Yposition {
+    from{
+        bottom: 0;
+    }
+    to{
+        bottom: 60%;
+    }
+}
+@keyframes text {
+    from{
+        font-size: 10px;
+        color: red;
+    }
+    to{
+        font-size: 30px;
+        color: blue;
+    }
+    
+}
+</style>
+<body>
+    <div class="container">
+        <div class="box">
+           <p>Box</p> 
+        </div>
+    </div>
+</body>
+</html>
