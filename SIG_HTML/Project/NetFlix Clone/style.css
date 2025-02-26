@@ -2,7 +2,25 @@
     padding: 0;
     margin: 0;
 }
-main {
-    background-image: url("img/bg.jpg");
+.main {
+    background-image: url("image/bg.jpg");
     height: 80vh;
+    position: relative;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+.main .box{
+    height: 80vh;
+    width: 100%;
+    opacity: 0.45;
+    background-color: black;
+    position: absolute;
+    top: 0;
+}
+nav{
+    max-width: 80vw;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
