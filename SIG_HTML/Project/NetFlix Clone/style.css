@@ -10,12 +10,12 @@
   background-position: center center;
   background-size: max(1200px, 100vw);
   background-repeat: no-repeat;
-  height: 644px;
+  height: 660px;
   position: relative;
 }
 
 .main .box {
-  height: 644px;
+  height: 660px;
   width: 100%;
   opacity: 0.69;
   position: absolute;
@@ -62,18 +62,20 @@ nav button img {
   flex-direction: column;
   color: white;
   position: relative;
+  gap: 25px;
+  padding: 30px;
 }
-.hero :first-child{
+.hero> :nth-child(1) {
     font-size: 48px;
     font-weight: 900;
     text-align: center;
 }
-.hero :nth-child(2){
+.hero> :nth-child(2){
     font-size: 24px;
     font-weight: 300;
     text-align: center;
 }
-.hero :nth-child(3){
+.hero> :nth-child(3){
     font-size: 14px;
     font-weight: 200;
     line-height: 1.5;
