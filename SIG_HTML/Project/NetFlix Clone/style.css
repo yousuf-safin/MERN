@@ -66,14 +66,17 @@ nav button img {
 .hero :first-child{
     font-size: 48px;
     font-weight: 900;
+    text-align: center;
 }
 .hero :nth-child(2){
     font-size: 24px;
     font-weight: 300;
+    text-align: center;
 }
 .hero :nth-child(3){
     font-size: 14px;
     font-weight: 200;
     line-height: 1.5;
     letter-spacing: 2px;
+    text-align: center;
 }
