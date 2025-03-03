@@ -55,7 +55,7 @@ nav button img {
 }
 .hero {
   font-family: "Martel Sans", sans-serif;
-  height: 100%;
+  height: calc(100% - 70px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -63,7 +63,7 @@ nav button img {
   color: white;
   position: relative;
   gap: 25px;
-  padding: 30px;
+  padding: 0 30px;
 }
 .hero> :nth-child(1) {
     font-size: 48px;
@@ -81,4 +81,8 @@ nav button img {
     line-height: 1.5;
     letter-spacing: 2px;
     text-align: center;
+}
+.separation{
+  height: 10px;
+  background-color: grey;
 }
