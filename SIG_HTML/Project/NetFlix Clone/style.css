@@ -58,7 +58,7 @@ nav button img {
   padding: 0px;
 } */
 .hero {
-  font-family: "Martel Sans", sans-serif;
+  font-family: "poppins", sans-serif;
   height: calc(100% - 70px);
   display: flex;
   align-items: center;
@@ -91,8 +91,13 @@ nav button img {
   background-color: rgb(75, 75, 75);
 }
 .btn {
+  font-family: "poppins", sans-serif;
   padding: 3px 8px;
-  background-color: white;
+  background-color: rgba(76, 75, 75, 0.639);
+  color: white;
+  border: 1px solid rgba(158, 158, 158, 0.358);
+  border-radius: 4px;
+  cursor: pointer;
   /* font-weight: bold; */
 }
 .btn-red {
@@ -101,6 +106,10 @@ nav button img {
   padding: 3px 24px;
   border-radius: 5px;
   font-size: 20px;
+}
+.btn-red-sm {
+  background-color: red;
+  color: rgba(255, 255, 255, 0.952);
 }
 .hero-buttons {
   display: flex;
@@ -116,7 +125,4 @@ nav button img {
   background-color: rgba(23, 23, 23, 0.7);
   border: 1px solid rgba(23, 23, 23, 0.5);
 }
-.btn-red-sm {
-  background-color: red;
-  color: white;
-}
+
