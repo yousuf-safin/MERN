@@ -5,6 +5,9 @@
   margin: 0;
   font-family: "Poppins", sans-serif;
 }
+body {
+  background-color: black;
+}
 .main {
   background-image: url("image/bg.jpg");
   background-position: center center;
@@ -125,4 +128,36 @@ nav button img {
   background-color: rgba(23, 23, 23, 0.7);
   border: 1px solid rgba(23, 23, 23, 0.5);
 }
-
+.first{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 70vw;
+  margin: auto;
+  color: white;
+}
+.secImg{
+  position: relative;
+}
+.secImg img{
+  width:30vw;
+  position: relative;
+  z-index: 10;
+}
+.secImg video{
+  position: absolute;
+  top: 51px;
+  right: 0;
+}
+section.first > div{
+  display: flex;
+  flex-direction: column;
+}
+.first > div :first-child{
+  font-size: 48px;
+  font-weight: bolder;
+}
+.first > div :nth-child(2){
+  font-size: 24px;
+  font-weight: 300;
+}
